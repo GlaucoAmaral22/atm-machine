@@ -1,0 +1,26 @@
+package application.handlers;
+
+import application.commands.FindUserCommand;
+import application.domain.models.User;
+import application.ports.inbound.FindUser;
+import application.ports.outbound.UserRepository;
+import jakarta.enterprise.context.ApplicationScoped;
+
+import java.util.Optional;
+
+@ApplicationScoped
+public class FindUserHandler implements FindUser {
+
+    public final UserRepository repository;
+
+    public FindUserHandler(UserRepository repository) {
+        this.repository = repository;
+    }
+
+    @Override
+    public User execute(FindUserCommand command) {
+        Optional<User> userOptional = repository.findBy(command.cpf);
+        if (userOptional.isEmpty()) throw new IllegalStateException();
+        return userOptional.get();
+    }
+}
