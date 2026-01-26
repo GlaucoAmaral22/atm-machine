@@ -1,7 +1,8 @@
 package application.ports.inbound;
 
+import application.commands.CreateUserCommand;
 import application.domain.models.User;
 
 public interface CreateUser {
-    void execute(User user);
+    User execute(CreateUserCommand command);
 }

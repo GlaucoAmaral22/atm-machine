@@ -1,4 +1,4 @@
-package driver.http;
+package driver.http.user.create;
 
 import application.domain.models.User;
 

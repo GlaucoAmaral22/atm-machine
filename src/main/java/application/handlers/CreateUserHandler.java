@@ -1,5 +1,6 @@
 package application.handlers;
 
+import application.commands.CreateUserCommand;
 import application.domain.models.User;
 import application.ports.inbound.CreateUser;
 import application.ports.outbound.UserRepository;
@@ -15,7 +16,9 @@ public class CreateUserHandler implements CreateUser {
     }
 
     @Override
-    public void execute(User user) {
+    public User execute(CreateUserCommand command) {
+        User user = User.from(command);
         userRepository.save(user);
+        return user;
     }
 }

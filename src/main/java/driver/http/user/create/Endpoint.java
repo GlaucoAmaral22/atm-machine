@@ -1,5 +1,6 @@
-package driver.http;
+package driver.http.user.create;
 
+import application.commands.CreateUserCommand;
 import application.domain.models.User;
 import application.ports.inbound.CreateUser;
 import jakarta.ws.rs.POST;
@@ -16,8 +17,8 @@ public class Endpoint {
 
     @POST
     public Response post(Request request) {
-        User user = request.toCommand();
-        this.handler.execute(user);
+        CreateUserCommand command = request.toCommand();
+        User user = this.handler.execute(command);
         ResponseBody responseBody = ResponseBody.from(user);
         return Response.status(Response.Status.CREATED)
                 .entity(responseBody)

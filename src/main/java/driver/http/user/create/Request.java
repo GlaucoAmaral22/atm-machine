@@ -1,7 +1,7 @@
-package driver.http;
+package driver.http.user.create;
 
+import application.commands.CreateUserCommand;
 import application.domain.models.Cpf;
-import application.domain.models.User;
 
 public class Request {
     public final String cpf;
@@ -14,7 +14,7 @@ public class Request {
         this.birthDate = birthDate;
     }
 
-    public User toCommand() {
-        return new User(new Cpf(this.cpf), this.name, this.birthDate);
+    public CreateUserCommand toCommand() {
+        return new CreateUserCommand(new Cpf(this.cpf), this.name, this.birthDate);
     }
 }
