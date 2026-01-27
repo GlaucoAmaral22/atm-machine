@@ -1,6 +1,7 @@
 package application.domain.models;
 
 import application.commands.CreateUserCommand;
+import application.commands.UpdateUserCommand;
 
 public final class User {
     public final String name;
@@ -14,6 +15,10 @@ public final class User {
     }
 
     public static User from(CreateUserCommand command) {
+        return new User(command.cpf, command.name, command.birthDate);
+    }
+
+    public static User from(UpdateUserCommand command) {
         return new User(command.cpf, command.name, command.birthDate);
     }
 }
