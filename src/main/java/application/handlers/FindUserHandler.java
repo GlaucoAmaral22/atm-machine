@@ -1,6 +1,7 @@
 package application.handlers;
 
 import application.commands.FindUserCommand;
+import application.domain.exceptions.UserNotFoundException;
 import application.domain.models.Cpf;
 import application.domain.models.User;
 import application.ports.inbound.FindUser;
@@ -22,7 +23,7 @@ public class FindUserHandler implements FindUser {
     public User execute(FindUserCommand command) {
         Cpf cpf = command.cpf;
         Optional<User> userOptional = repository.findBy(cpf);
-        if (userOptional.isEmpty()) throw new IllegalStateException();
+        if (userOptional.isEmpty()) throw new UserNotFoundException(cpf);
         return userOptional.get();
     }
 }
