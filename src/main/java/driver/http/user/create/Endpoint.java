@@ -3,6 +3,7 @@ package driver.http.user.create;
 import application.commands.CreateUserCommand;
 import application.domain.models.User;
 import application.ports.inbound.CreateUser;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.Response;
@@ -16,7 +17,7 @@ public class Endpoint {
     }
 
     @POST
-    public Response post(Request request) {
+    public Response post(@Valid Request request) {
         CreateUserCommand command = request.toCommand();
         User user = this.handler.execute(command);
         ResponseBody responseBody = ResponseBody.from(user);

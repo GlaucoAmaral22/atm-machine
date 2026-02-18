@@ -3,7 +3,7 @@ package application.domain.exceptions;
 import application.domain.models.Cpf;
 
 public class UserAlreadyExistsException extends RuntimeException {
-    public static final String KEY = "USER_ALREADY_EXISTS";
+    public final String KEY = "USER_ALREADY_EXISTS";
 
     public final Cpf cpf;
 

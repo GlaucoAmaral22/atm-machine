@@ -1,17 +1,17 @@
 package driver.http.exception.mappers;
 
-import application.domain.exceptions.UserAlreadyExistsException;
+import application.domain.exceptions.InvalidCpfException;
 import jakarta.ws.rs.core.Response;
 import org.jboss.resteasy.reactive.server.ServerExceptionMapper;
 
-public class UserAlreadyExistsExceptionMapper {
+public class InvalidCpfExceptionMapper {
 
     @ServerExceptionMapper
-    public Response toResponse(UserAlreadyExistsException exception) {
-        String message = "User with CPF %s already exists.".formatted(exception.cpf.value);
+    public Response toResponse(InvalidCpfException exception) {
+        String message = "Invalid CPF value: %s".formatted(exception.value);
         ErrorResponse responseBody = new ErrorResponse(exception.KEY, message);
         return Response
-                .status(Response.Status.CONFLICT)
+                .status(Response.Status.BAD_REQUEST)
                 .entity(responseBody)
                 .build();
     }

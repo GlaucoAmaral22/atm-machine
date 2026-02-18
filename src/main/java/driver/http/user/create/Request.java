@@ -2,8 +2,10 @@ package driver.http.user.create;
 
 import application.commands.CreateUserCommand;
 import application.domain.models.Cpf;
+import driver.http.validators.ValidCpf;
 
 public class Request {
+    @ValidCpf
     public final String cpf;
     public final String name;
     public final String birthDate;
