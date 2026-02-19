@@ -1,18 +1,13 @@
 package driver.http.user.update;
 
 import application.commands.UpdateUserCommand;
+import application.domain.models.BirthDate;
 import application.domain.models.Cpf;
+import driver.http.validators.ValidBirthDate;
 
-public class Request {
-    public final String name;
-    public final String birthDate;
-
-    public Request(String name, String birthDate) {
-        this.name = name;
-        this.birthDate = birthDate;
-    }
+public record Request(String name, @ValidBirthDate String birthDate) {
 
     public UpdateUserCommand toCommand(String cpf) {
-        return new UpdateUserCommand(new Cpf(cpf), this.name, this.birthDate);
+        return new UpdateUserCommand(new Cpf(cpf), this.name, new BirthDate(this.birthDate));
     }
 }

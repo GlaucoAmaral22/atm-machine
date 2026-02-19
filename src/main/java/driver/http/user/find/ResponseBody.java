@@ -14,6 +14,6 @@ public class ResponseBody {
     }
 
     public static ResponseBody from (User user) {
-        return new ResponseBody(user.cpf.value, user.name, user.birthDate);
+        return new ResponseBody(user.cpf().value(), user.name(), user.birthDate().value());
     }
 }

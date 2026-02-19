@@ -20,8 +20,8 @@ public class CreateUserHandler implements CreateUser {
     @Override
     public User execute(CreateUserCommand command) {
         User user = User.from(command);
-        Optional<User> optionalUser = this.userRepository.findBy(command.cpf);
-        if (optionalUser.isPresent()) throw new UserAlreadyExistsException(command.cpf);
+        Optional<User> optionalUser = this.userRepository.findBy(command.cpf());
+        if (optionalUser.isPresent()) throw new UserAlreadyExistsException(command.cpf());
         userRepository.save(user);
         return user;
     }

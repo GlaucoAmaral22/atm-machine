@@ -8,7 +8,7 @@ public class UserAlreadyExistsExceptionMapper {
 
     @ServerExceptionMapper
     public Response toResponse(UserAlreadyExistsException exception) {
-        String message = "User with CPF %s already exists.".formatted(exception.cpf.value);
+        String message = "User with CPF %s already exists.".formatted(exception.cpf.value());
         ErrorResponse responseBody = new ErrorResponse(exception.KEY, message);
         return Response
                 .status(Response.Status.CONFLICT)

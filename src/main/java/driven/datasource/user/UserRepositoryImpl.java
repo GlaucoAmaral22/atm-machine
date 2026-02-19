@@ -21,14 +21,14 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public Optional<User> findBy(Cpf cpf) {
         return userList.stream()
-                .filter(user -> user.cpf.value.equals(cpf.value))
+                .filter(user -> user.cpf().value().equals(cpf.value()))
                 .findFirst();
     }
 
     @Override
     public void update(User updatedUser) {
         Optional<User> userFiltered = userList.stream()
-                .filter(user -> user.cpf.value.equals(updatedUser.cpf.value))
+                .filter(user -> user.cpf().value().equals(updatedUser.cpf().value()))
                 .findFirst();
 
         if (userFiltered.isEmpty()) throw new IllegalStateException("User does not exists");
@@ -39,7 +39,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public void deleteBy(Cpf cpf) {
         Optional<User> userToBeDeleted = userList.stream()
-                .filter(user -> user.cpf.value.equals(cpf.value))
+                .filter(user -> user.cpf().value().equals(cpf.value()))
                 .findFirst();
         userToBeDeleted.ifPresent(userList::remove);
     }
