@@ -3,6 +3,7 @@ package driver.http.user.update;
 import application.commands.UpdateUserCommand;
 import application.ports.inbound.UpdateUser;
 import driver.http.validators.ValidCpf;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.Response;
@@ -17,7 +18,7 @@ public class Endpoint {
 
     @PUT
     @Path("/{cpf}")
-    public Response put(@ValidCpf String cpf, Request request) {
+    public Response put(@ValidCpf String cpf, @Valid Request request) {
         UpdateUserCommand command = request.toCommand(cpf);
         this.handler.execute(command);
         return Response.noContent().build();
