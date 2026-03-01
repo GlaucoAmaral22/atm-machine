@@ -6,11 +6,9 @@ import application.domain.models.Cpf;
 import application.domain.models.User;
 import application.ports.inbound.FindUser;
 import application.ports.outbound.UserRepository;
-import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.Optional;
 
-@ApplicationScoped
 public class FindUserHandler implements FindUser {
 
     public final UserRepository repository;

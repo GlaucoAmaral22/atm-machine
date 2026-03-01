@@ -4,9 +4,7 @@ import application.commands.UpdateUserCommand;
 import application.domain.models.User;
 import application.ports.inbound.UpdateUser;
 import application.ports.outbound.UserRepository;
-import jakarta.enterprise.context.ApplicationScoped;
 
-@ApplicationScoped
 public class UpdateUserHandler implements UpdateUser {
     public final UserRepository repository;
 
