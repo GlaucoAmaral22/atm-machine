@@ -1,4 +1,4 @@
-package driver.http.exception.mappers;
+package driver.user.http.exception.mappers;
 
 import application.user.domain.exceptions.UserAlreadyExistsException;
 import jakarta.ws.rs.core.Response;
