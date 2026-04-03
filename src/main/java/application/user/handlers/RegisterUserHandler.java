@@ -18,8 +18,8 @@ public class RegisterUserHandler implements RegisterUser {
     @Override
     public User execute(RegisterUserCommand command) {
         User user = User.from(command);
-        Optional<User> optionalUser = this.userRepository.findBy(command.cpf());
-        if (optionalUser.isPresent()) throw new UserAlreadyExistsException(command.cpf());
+        Optional<User> optionalUser = this.userRepository.findBy(user.id());
+        if (optionalUser.isPresent()) throw new UserAlreadyExistsException(user.id());
         userRepository.save(user);
         return user;
     }

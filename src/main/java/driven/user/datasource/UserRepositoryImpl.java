@@ -8,6 +8,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @ApplicationScoped
 public class UserRepositoryImpl implements UserRepository {
@@ -19,16 +20,16 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public Optional<User> findBy(Cpf cpf) {
+    public Optional<User> findBy(UUID id) {
         return userList.stream()
-                .filter(user -> user.cpf().value().equals(cpf.value()))
+                .filter(user -> user.id().equals(id))
                 .findFirst();
     }
 
     @Override
     public void update(User updatedUser) {
         Optional<User> userFiltered = userList.stream()
-                .filter(user -> user.cpf().value().equals(updatedUser.cpf().value()))
+                .filter(user -> user.id().equals(updatedUser.id()))
                 .findFirst();
 
         if (userFiltered.isEmpty()) throw new IllegalStateException("User does not exists");

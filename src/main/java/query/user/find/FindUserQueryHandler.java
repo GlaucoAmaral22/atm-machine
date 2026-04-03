@@ -6,6 +6,7 @@ import application.user.domain.models.User;
 import application.user.ports.outbound.UserRepository;
 
 import java.util.Optional;
+import java.util.UUID;
 
 public record FindUserQueryHandler(UserRepository repository) {
 
@@ -15,10 +16,10 @@ public record FindUserQueryHandler(UserRepository repository) {
     e nao quero atrelar ao fluxo de dominio dos comandos.
      */
 
-    public User execute(String stringCpf) {
-        Cpf cpf = new Cpf(stringCpf);
-        Optional<User> userOptional = repository.findBy(cpf);
-        if (userOptional.isEmpty()) throw new UserNotFoundException(cpf);
+    public User execute(String id) {
+        UUID uuid = UUID.fromString(id);
+        Optional<User> userOptional = repository.findBy(uuid);
+        if (userOptional.isEmpty()) throw new UserNotFoundException(uuid);
         return userOptional.get();
     }
 }

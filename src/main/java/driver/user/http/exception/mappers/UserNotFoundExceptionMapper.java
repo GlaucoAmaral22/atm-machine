@@ -8,7 +8,7 @@ public class UserNotFoundExceptionMapper {
 
     @ServerExceptionMapper
     public Response toResponse(UserNotFoundException exception) {
-        String message = "User with CPF %s not found.".formatted(exception.cpf.value());
+        String message = "User with Id %s not found.".formatted(exception.id.toString());
         ErrorResponse responseBody = new ErrorResponse(exception.KEY, message);
         return Response
                 .status(Response.Status.NOT_FOUND)

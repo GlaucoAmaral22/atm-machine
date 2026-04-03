@@ -6,6 +6,8 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.Response;
 
+import java.util.UUID;
+
 @Path("/user")
 public class Endpoint {
 
@@ -16,9 +18,9 @@ public class Endpoint {
     }
 
     @GET
-    @Path("/{cpf}")
-    public Response get(@ValidCpf String cpf) {
-        User user = find.execute(cpf);
+    @Path("/{id}")
+    public Response get(String id) {
+        User user = this.find.execute(id);
         ResponseBody response = ResponseBody.from(user);
         return Response.ok(response).build();
     }

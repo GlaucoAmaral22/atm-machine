@@ -1,4 +1,4 @@
-package driver.user.http.create;
+package driver.user.http.register;
 
 import application.user.commands.RegisterUserCommand;
 import application.user.domain.models.User;

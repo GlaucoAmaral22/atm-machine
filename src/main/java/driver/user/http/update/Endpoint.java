@@ -17,9 +17,9 @@ public class Endpoint {
     }
 
     @PUT
-    @Path("/{cpf}")
-    public Response put(@ValidCpf String cpf, @Valid Request request) {
-        UpdateUserCommand command = request.toCommand(cpf);
+    @Path("/{id}")
+    public Response put(String id, @Valid Request request) {
+        UpdateUserCommand command = request.toCommand(id);
         this.handler.execute(command);
         return Response.noContent().build();
     }

@@ -1,13 +1,13 @@
 package application.user.domain.exceptions;
 
-import application.user.domain.models.Cpf;
+import java.util.UUID;
 
 public class UserNotFoundException extends RuntimeException {
     public final String KEY = "USER_NOT_FOUND";
 
-    public final Cpf cpf;
+    public final UUID id;
 
-    public UserNotFoundException(Cpf cpf) {
-        this.cpf = cpf;
+    public UserNotFoundException(UUID id) {
+        this.id = id;
     }
 }
