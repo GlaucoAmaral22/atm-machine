@@ -2,7 +2,6 @@ package driver.user.http.update;
 
 import application.user.commands.UpdateUserCommand;
 import application.user.ports.inbound.UpdateUser;
-import driver.user.http.validators.ValidCpf;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;

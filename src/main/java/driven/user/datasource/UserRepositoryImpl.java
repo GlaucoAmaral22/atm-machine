@@ -1,6 +1,5 @@
 package driven.user.datasource;
 
-import application.user.domain.models.Cpf;
 import application.user.domain.models.User;
 import application.user.ports.outbound.UserRepository;
 import jakarta.enterprise.context.ApplicationScoped;

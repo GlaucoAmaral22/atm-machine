@@ -1,12 +1,9 @@
 package query.user.find;
 
 import application.user.domain.models.User;
-import driver.user.http.validators.ValidCpf;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.Response;
-
-import java.util.UUID;
 
 @Path("/user")
 public class Endpoint {

@@ -1,7 +1,6 @@
 package query.user.find;
 
 import application.user.domain.exceptions.UserNotFoundException;
-import application.user.domain.models.Cpf;
 import application.user.domain.models.User;
 import application.user.ports.outbound.UserRepository;
 
