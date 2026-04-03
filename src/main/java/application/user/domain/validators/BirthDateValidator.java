@@ -1,7 +1,5 @@
 package application.user.domain.validators;
 
-import com.aayushatharva.brotli4j.common.annotations.Local;
-
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeParseException;
