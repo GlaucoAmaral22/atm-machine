@@ -1,36 +1,27 @@
 package config;
 
-import application.handlers.CreateUserHandler;
-import application.handlers.DeleteUserHandler;
-import application.handlers.FindUserHandler;
-import application.handlers.UpdateUserHandler;
-import application.ports.outbound.UserRepository;
+import application.user.handlers.RegisterUserHandler;
+import application.user.handlers.UpdateUserHandler;
+import application.user.ports.outbound.UserRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.inject.Produces;
+import query.user.find.FindUserQueryHandler;
 
 @ApplicationScoped
 public class HandlersConfig {
 
     @Produces
-    public CreateUserHandler createUserHandler(UserRepository userRepository) {
-        return new CreateUserHandler(userRepository);
+    public RegisterUserHandler createUserHandler(UserRepository userRepository) {
+        return new RegisterUserHandler(userRepository);
     }
 
     @Produces
-    public DeleteUserHandler deleteUserHandler(UserRepository userRepository) {
-        return new DeleteUserHandler(userRepository);
-    }
-
-    @Produces
-    public FindUserHandler findUserHandler(UserRepository userRepository) {
-        return new FindUserHandler(userRepository);
+    public FindUserQueryHandler findUserQueryHandler(UserRepository userRepository) {
+        return new FindUserQueryHandler(userRepository);
     }
 
     @Produces
     public UpdateUserHandler updateUserHandler(UserRepository userRepository) {
         return new UpdateUserHandler(userRepository);
     }
-
-
-
 }

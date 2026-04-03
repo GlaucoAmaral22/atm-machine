@@ -16,3 +16,6 @@ SQL Adapter
 - **Port OUT (UserRepository)**: abstrai a persistência
 - **SQL Adapter**: implementação concreta de acesso ao banco
 
+
+
+
